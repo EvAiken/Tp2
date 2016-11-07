@@ -12,8 +12,7 @@ print $query->start_html(-title=>'Guarda Códigos',
                          );
 #-linkrel=>'"stylesheet" type="text/css" href="./main.css"');
 
-print $query->img({-src=>'img.jpg',
-					-alt=>'Imagen de Perl'});
+print $query->img({-src=>'img.jpg', -alt=>'Imagen de Perl'});
 
 if(!$query->param){
 	print $query->start_form;
@@ -36,7 +35,7 @@ if(!$query->param){
 			-size=>25,
 			-maxlength=>80);
 	print $query->br;
-	open F,'/home/alumnado/Escritorio/Perl/texto1.txt' or die "Imposible abrir: $!";
+	open F,'lenguajes.txt' or die "Imposible abrir: $!";
 
 	# Leer linea a linea e ir añadiendo a un array con push
 	while(<F>){
@@ -52,11 +51,8 @@ if(!$query->param){
 
 	# Ahora meteremos los valores del array en un scroling_list
 
-	print $query->scrolling_list(-name=>'opciones',
-									 -values=>\@lineas,
-									  -size=>4,
-									  -multiple=>'true',
-									  -default=>'perl');
+	print $query->scrolling_list(-name=>'opciones', -values=>\@lineas, -size=>4,
+                                     -multiple=>'true', -default=>'perl');
 	print $query->br;
 	print $query->br;
 	print $query->label('Escriba su código:');
@@ -77,7 +73,7 @@ if(!$query->param){
 		($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
 		$codigo = $query->param('codigo');
 		# Abre el archivo (o lo crea si no existe)
-		open (FILE, ">> texto1.txt");
+		open (FILE, ">> /tmp/texto1.txt");
 		#escribe
 		print FILE "_________________________________________________________________________________________________________________\n";
 		print FILE "Fecha: ", "$mday $months[$mon] $days[$wday]\n";
@@ -89,7 +85,7 @@ if(!$query->param){
 		}
 		print FILE "\n";
 		print FILE "======================TÍTULO: ",$titulo, " ======================", "\n";
-		print FILE "----------------------START_CÖDIGO---------------------------------------------------------\n";
+		print FILE "----------------------START_CÓDIGO---------------------------------------------------------\n";
 		print FILE $codigo,"\n";
 		print FILE "----------------------END_CÖDIGO-----------------------------------------------------------\n\n";
 		# Cierra el archivo
