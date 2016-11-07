@@ -87,7 +87,7 @@ if(!$query->param){
 		print FILE "======================TÍTULO: ",$titulo, " ======================", "\n";
 		print FILE "----------------------START_CÓDIGO---------------------------------------------------------\n";
 		print FILE $codigo,"\n";
-		print FILE "----------------------END_CÖDIGO-----------------------------------------------------------\n\n";
+		print FILE "----------------------END_CÓDIGO-----------------------------------------------------------\n\n";
 		# Cierra el archivo
 		close FILE;
 		print $query->h3('Tus códigos han sido guardados un un fichero en /usr/lib/cgi-bin/Perl');
